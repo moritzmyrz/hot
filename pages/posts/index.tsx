@@ -1,16 +1,42 @@
-import {createClient} from 'contentful';
+import { createClient } from "contentful";
+import Link from "next/link";
+import { Post } from "../../models/Post";
 
 const client = createClient({
-  space: "6fql8it9e25a",
-  accessToken: "-Xdb7k4rZQP06-xxL-1yHF15Dynu8wXbnmkbaog0H-Y",
+	space: "6fql8it9e25a",
+	accessToken: "B_gSJKIX2w3rX6RKxQgM8AHM4HppsDerb4InIJeCNgc",
 });
-client
-  .getEntry("5PeGS2SoZGSa4GuiQsigQu")
-  .then((entry) => console.log(entry))
-  .catch((err) => console.log(err));
 
-const Posts: React.FC = () => {
-  return <></>;
+export async function getStaticProps() {
+	let data = await client.getEntries({
+		content_type: "post",
+	});
+
+	return {
+		props: {
+			posts: data.items,
+		},
+	};
+}
+
+interface Props {
+	posts: Post[];
+}
+
+const Posts: React.FC<Props> = ({ posts }: Props) => {
+	console.log(posts);
+
+	return (
+		<>
+			<ul>
+				{posts.map((post) => (
+					<Link href={`/posts/${post.fields.slug}`}>
+						<a>{post.fields.title}</a>
+					</Link>
+				))}
+			</ul>
+		</>
+	);
 };
 
 export default Posts;
