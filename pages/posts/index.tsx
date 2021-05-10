@@ -1,6 +1,6 @@
-import contentful from 'contentful';
+import {createClient} from 'contentful';
 
-const client = contentful.createClient({
+const client = createClient({
   space: "6fql8it9e25a",
   accessToken: "-Xdb7k4rZQP06-xxL-1yHF15Dynu8wXbnmkbaog0H-Y",
 });
