@@ -1,42 +1,42 @@
-import { createClient } from "contentful";
-import Link from "next/link";
-import { Post } from "../../models/Post";
+import { createClient } from 'contentful';
+import React from 'react';
+
+import PostCard from '../../components/PostCard';
+import { Post } from '../../models/Post';
 
 const client = createClient({
-	space: "6fql8it9e25a",
-	accessToken: "B_gSJKIX2w3rX6RKxQgM8AHM4HppsDerb4InIJeCNgc",
+  space: "6fql8it9e25a",
+  accessToken: "dDXIpioCEg2z9_LLwbVLUoWWzu864YNqbTLj5TccULo",
 });
 
 export async function getStaticProps() {
-	let data = await client.getEntries({
-		content_type: "post",
-	});
+  let data = await client.getEntries({
+    content_type: "post",
+  });
 
-	return {
-		props: {
-			posts: data.items,
-		},
-	};
+  return {
+    props: {
+      posts: data.items,
+    },
+  };
 }
 
 interface Props {
-	posts: Post[];
+  posts: Post[];
 }
 
 const Posts: React.FC<Props> = ({ posts }: Props) => {
-	console.log(posts);
+  console.log(posts);
 
-	return (
-		<>
-			<ul>
-				{posts.map((post) => (
-					<Link href={`/posts/${post.fields.slug}`}>
-						<a>{post.fields.title}</a>
-					</Link>
-				))}
-			</ul>
-		</>
-	);
+  return (
+    <div className="flex justify-center">
+      <div className="my-4 grid grid-flow-row grid-cols-3 gap-4">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Posts;
