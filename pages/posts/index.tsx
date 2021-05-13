@@ -1,42 +1,31 @@
 import { createClient } from "contentful";
-import Link from "next/link";
+import { InferGetStaticPropsType } from "next";
+import React from "react";
+import PostCard from "../../components/PostCard";
 import { Post } from "../../models/Post";
 
-const client = createClient({
-	space: "6fql8it9e25a",
-	accessToken: "B_gSJKIX2w3rX6RKxQgM8AHM4HppsDerb4InIJeCNgc",
-});
+export const getStaticProps = async () => {
+	const client = createClient({
+		space: process.env.CONTENTFUL_SPACE_ID,
+		accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+	});
 
-export async function getStaticProps() {
-	let data = await client.getEntries({
+	const res = await client.getEntries({
 		content_type: "post",
 	});
 
-	return {
-		props: {
-			posts: data.items,
-		},
-	};
-}
+	return { props: { posts: res.items } };
+};
 
-interface Props {
-	posts: Post[];
-}
-
-const Posts: React.FC<Props> = ({ posts }: Props) => {
-	console.log(posts);
-
+const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+	const posts = (props.posts as unknown) as Post[];
 	return (
-		<>
-			<ul>
-				{posts.map((post) => (
-					<Link href={`/posts/${post.fields.slug}`}>
-						<a>{post.fields.title}</a>
-					</Link>
-				))}
-			</ul>
-		</>
+		<div className="grid grid-cols-2 gap-3">
+			{posts.map((post) => (
+				<PostCard key={post.sys.id} post={post} />
+			))}
+		</div>
 	);
 };
 
-export default Posts;
+export default index;

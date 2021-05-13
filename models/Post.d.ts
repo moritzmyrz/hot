@@ -27,9 +27,43 @@ export interface Sys1 {
 }
 export interface Fields {
 	title: string;
+	slug: string;
+	thumbnail: Thumbnail;
 	content: Content;
 	date: string;
-	slug: string;
+}
+export interface Thumbnail {
+	metadata: Metadata;
+	sys: Sys2;
+	fields: Fields1;
+}
+export interface Sys2 {
+	space: SpaceOrEnvironmentOrContentType;
+	id: string;
+	type: string;
+	createdAt: string;
+	updatedAt: string;
+	environment: SpaceOrEnvironmentOrContentType;
+	revision: number;
+	locale: string;
+}
+export interface Fields1 {
+	title: string;
+	file: File;
+}
+export interface File {
+	url: string;
+	details: Details;
+	fileName: string;
+	contentType: string;
+}
+export interface Details {
+	size: number;
+	image: Image;
+}
+export interface Image {
+	width: number;
+	height: number;
 }
 export interface Content {
 	data: Data;
@@ -44,10 +78,7 @@ export interface ContentEntity {
 }
 export interface ContentEntity1 {
 	data: Data;
-	marks?: (MarksEntity | null)[] | null;
+	marks?: null[] | null;
 	value: string;
 	nodeType: string;
-}
-export interface MarksEntity {
-	type: string;
 }
