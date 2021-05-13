@@ -14,7 +14,7 @@ export const getStaticProps = async () => {
 		content_type: "post",
 	});
 
-	return { props: { posts: res.items } };
+	return { props: { posts: res.items }, revalidate: 10 };
 };
 
 const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {

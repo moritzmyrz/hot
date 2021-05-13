@@ -30,7 +30,7 @@ export const getStaticProps = async ({ params }) => {
 		"fields.slug": params.slug,
 	});
 
-	return { props: { post: (items[0] as unknown) as Post } };
+	return { props: { post: (items[0] as unknown) as Post }, revalidate: 10 };
 };
 const PostSite = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const { title, slug, thumbnail, content } = post.fields;
