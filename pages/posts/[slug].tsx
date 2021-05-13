@@ -34,6 +34,7 @@ export const getStaticProps = async ({ params }) => {
 };
 const PostSite = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const { title, slug, thumbnail, content } = post.fields;
+	console.log(content);
 	return (
 		<div>
 			<Image
@@ -42,6 +43,7 @@ const PostSite = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 				height={thumbnail.fields.file.details.image.height}
 			/>
 			<p className="text-3xl font-semibold">{title}</p>
+			{/* @ts-ignore */}
 			{documentToReactComponents(content)}
 		</div>
 	);
