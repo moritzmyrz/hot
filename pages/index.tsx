@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
 const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const posts = props.posts as unknown as Post[];
 	return (
-		<div className="flex flex-1 space-x-5 space-y-3 mx-auto w-4/5 sm:w-3/5">
+		<div className="md:grid md:grid-cols-2 space-x-3 space-y-3 mx-auto w-4/5">
 			{posts.map((post) => (
 				<PostCard key={post.sys.id} post={post} />
 			))}

@@ -10,6 +10,9 @@ const theme = createMuiTheme({
 		primary: {
 			main: colors.orange[500],
 		},
+		secondary: {
+			main: colors.yellow[400],
+		},
 	},
 });
 
