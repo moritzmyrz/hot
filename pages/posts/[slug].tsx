@@ -102,7 +102,7 @@ const PostSite = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 					<p className="text-gray-700">{thumbnail.fields.description}</p>
 				)}
 			</div>
-			<div className="">
+			<div className="text-xl">
 				Publisert
 				<span className="font-semibold">
 					{" " + postDate.toLocaleDateString("no-NB")}
