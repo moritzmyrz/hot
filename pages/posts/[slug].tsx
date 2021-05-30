@@ -102,16 +102,16 @@ const PostSite = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 					<p className="text-gray-700">{thumbnail.fields.description}</p>
 				)}
 			</div>
-			<div className="text-xl">
+			<div className="mt-4 space-y-5">
+				{/* @ts-ignore */}
+				{documentToReactComponents(content, options)}
+			</div>
+			<div className="text-xl mt-4">
 				Publisert
 				<span className="font-semibold">
 					{" " + postDate.toLocaleDateString("no-NB")}
 				</span>{" "}
 				– av <span className="font-semibold">{author}</span>
-			</div>
-			<div className="mt-4 space-y-5">
-				{/* @ts-ignore */}
-				{documentToReactComponents(content, options)}
 			</div>
 		</div>
 	);

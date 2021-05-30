@@ -1,12 +1,14 @@
 import { IconButton } from "@material-ui/core";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../hooks/window";
 import MenuDrawer from "./drawers/Menu";
 
 const Header = () => {
 	const { width } = useWindowDimensions();
+	const router = useRouter();
 
 	const [menu, setMenu] = useState(false);
 
@@ -18,7 +20,10 @@ const Header = () => {
 		<header>
 			<MenuDrawer open={menu} setOpen={setMenu} />
 			<div className="flex flex-row justify-between items-center h-20 px-5 mb-2 bg-white mx-auto border-b-2 border-gray-300">
-				<div className="h-full flex flex-row">
+				<div
+					className="h-full flex flex-row cursor-pointer"
+					onClick={() => router.push("/")}
+				>
 					<div className="flex items-center">
 						<Image src="/logo.png" width={60} height={60} layout="fixed" />
 					</div>

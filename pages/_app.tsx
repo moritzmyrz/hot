@@ -1,6 +1,7 @@
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import "tailwindcss/tailwind.css";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "../style/fonts.css";
 const colors = require("tailwindcss/colors");
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }) {
 					<div className="flex-1">
 						<Component {...pageProps} />
 					</div>
+					<Footer />
 				</div>
 			</ThemeProvider>
 		</React.Fragment>
