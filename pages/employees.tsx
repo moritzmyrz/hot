@@ -1,4 +1,4 @@
-import { Avatar } from "@material-ui/core";
+import Image from "next/image";
 import React from "react";
 
 interface Employee {
@@ -30,12 +30,8 @@ const Employees = () => {
 		<div className="grid grid-cols-2 gap-2 m-auto w-2/4">
 			{employees.map((emp) => (
 				<div className="bg-gray-100 rounded-lg p-2 flex h-full">
-					<Avatar
-						alt={emp.name}
-						src={emp.avatar}
-						style={{ height: 64, width: 64 }}
-					/>
-					<div className="my-auto flex flex-col">
+					<Image alt={emp.name} src={emp.avatar} height={64} width={64} />
+					<div className="ml-2 my-auto flex flex-col">
 						<p className="font-bold">{emp.name}</p>
 						<p>{emp.title}</p>
 					</div>
