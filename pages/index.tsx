@@ -33,6 +33,9 @@ const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 				{posts.map((post) => (
 					<PostCard key={post.sys.id} post={post} />
 				))}
+				{posts.map((post) => (
+					<PostCard key={post.sys.id} post={post} />
+				))}
 			</div>
 			<style jsx>{`
 				.archive {
