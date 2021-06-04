@@ -37,6 +37,7 @@ const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 			<style jsx>{`
 				.archive {
 					display: grid;
+					grid-auto-flow: dense;
 					grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 					grid-gap: 32px;
 					grid-auto-flow: dense;
