@@ -20,11 +20,32 @@ export const getStaticProps = async () => {
 const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const posts = props.posts as unknown as Post[];
 	return (
-		<div className="md:grid md:grid-cols-2 space-x-3 space-y-3 mx-auto w-4/5">
-			{posts.map((post) => (
-				<PostCard key={post.sys.id} post={post} />
-			))}
-		</div>
+		<React.Fragment>
+			<div
+				className="w-3/5 mx-auto archive"
+				// style={{
+				// 	display: "grid",
+				// 	gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+				// 	gridGap: 32,
+				// 	gridAutoFlow: "dense",
+				// }}
+			>
+				{posts.map((post) => (
+					<PostCard key={post.sys.id} post={post} />
+				))}
+				{posts.map((post) => (
+					<PostCard key={post.sys.id} post={post} />
+				))}
+			</div>
+			<style jsx>{`
+				.archive {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+					grid-gap: 32px;
+					grid-auto-flow: dense;
+				}
+			`}</style>
+		</React.Fragment>
 	);
 };
 

@@ -37,9 +37,6 @@ const Header = () => {
 						<Link href="/employees">
 							<a className="hover:text-orange-500">Ansatte</a>
 						</Link>
-						<Link href="/contact">
-							<a className="hover:text-orange-500">Kontakt Oss</a>
-						</Link>
 					</div>
 				) : (
 					<IconButton

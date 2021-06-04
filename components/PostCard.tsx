@@ -6,17 +6,36 @@ const PostCard = ({ post }: { post: Post }) => {
 	const { title, slug, thumbnail, date } = post.fields;
 
 	return (
-		<div
-			onClick={() => router.push(`/posts/${slug}`)}
-			className="cursor-pointer rounded-b-lg bg-gray-100"
-		>
-			<Image
-				src={`https:${thumbnail.fields.file.url}`}
-				width={thumbnail.fields.file.details.image.width}
-				height={thumbnail.fields.file.details.image.height}
-			/>
-			<p className="mx-2 font-semibold text-lg">{title}</p>
-		</div>
+		<React.Fragment>
+			<div
+				onClick={() => router.push(`/posts/${slug}`)}
+				className="cursor-pointer hover:underline article"
+			>
+				<Image
+					src={`https:${thumbnail.fields.file.url}`}
+					width={thumbnail.fields.file.details.image.width}
+					height={thumbnail.fields.file.details.image.height}
+				/>
+				<p className=" font-semibold text-lg">{title}</p>
+			</div>
+			<style jsx>{`
+				.article:first-child {
+					grid-column: 1 / 4;
+				}
+				// .article:nth-child(3) {
+				// 	grid-column: 2/4;
+				// }
+				.article:nth-child(31n + 1) {
+					grid-column: 1 / -1;
+				}
+				.article:nth-child(16n + 2) {
+					grid-column: -3 / -1;
+				}
+				.article:nth-child(16n + 10) {
+					grid-column: 1 / -2;
+				}
+			`}</style>
+		</React.Fragment>
 	);
 };
 
