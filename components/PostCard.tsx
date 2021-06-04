@@ -19,10 +19,7 @@ const PostCard = ({ post }: { post: Post }) => {
 				<p className=" font-semibold text-lg">{title}</p>
 			</div>
 			<style jsx>{`
-				.article:first-child {
-					grid-column: 1 / 4;
-				}
-				.article:nth-child(31n + 1) {
+				s .article:nth-child(31n + 1) {
 					grid-column: 1 / -1;
 				}
 				.article:nth-child(16n + 2) {
