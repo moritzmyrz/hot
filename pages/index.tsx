@@ -22,7 +22,7 @@ const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
 		<React.Fragment>
 			<div
-				className="w-3/5 mx-auto archive"
+				className="w-4/5 sm:w-3/5 mx-auto archive"
 				// style={{
 				// 	display: "grid",
 				// 	gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
@@ -43,6 +43,12 @@ const index = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 					grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 					grid-gap: 32px;
 					grid-auto-flow: dense;
+				}
+				@media (max-width: 459px) {
+					.archive {
+						display: flex;
+						flex-direction: column;
+					}
 				}
 			`}</style>
 		</React.Fragment>
