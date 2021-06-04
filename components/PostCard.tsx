@@ -21,7 +21,7 @@ const PostCard = ({ post }: { post: Post }) => {
 			<style jsx>{`
 				.article:nth-child(31n + 1) {
 					grid-column: 1 / 4;
-					margin-left: 0 auto;
+					margin: 0 auto;
 				}
 				.article:nth-child(16n + 3) {
 					grid-column: 2/4;
