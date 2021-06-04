@@ -110,8 +110,12 @@ const PostSite = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 				Publisert
 				<span className="font-semibold">
 					{" " + postDate.toLocaleDateString("no-NB")}
-				</span>{" "}
-				– av <span className="font-semibold">{author}</span>
+				</span>
+				{author && (
+					<span>
+						- av <span className="font-semibold">{author}</span>
+					</span>
+				)}
 			</div>
 		</div>
 	);
