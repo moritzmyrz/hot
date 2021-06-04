@@ -22,9 +22,6 @@ const PostCard = ({ post }: { post: Post }) => {
 				.article:first-child {
 					grid-column: 1 / 4;
 				}
-				// .article:nth-child(3) {
-				// 	grid-column: 2/4;
-				// }
 				.article:nth-child(31n + 1) {
 					grid-column: 1 / -1;
 				}
