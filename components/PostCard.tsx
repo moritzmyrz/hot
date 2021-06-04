@@ -20,13 +20,13 @@ const PostCard = ({ post }: { post: Post }) => {
 			</div>
 			<style jsx>{`
 				.article:nth-child(31n + 1) {
-					grid-column: 1 / -1;
+					grid-column: 1 / 4;
 				}
 				.article:nth-child(16n + 2) {
-					grid-column: -3 / -1;
+					grid-column: 2/4;
 				}
 				.article:nth-child(16n + 10) {
-					grid-column: 1 / -2;
+					grid-column: 1 / 3;
 				}
 			`}</style>
 		</React.Fragment>
